@@ -14,6 +14,9 @@ public class Practice04Alpha extends RelativeLayout {
     Button animateBt;
     ImageView imageView;
 
+    int alphaStateCount = 2;
+    int alphaState = 0;
+
     public Practice04Alpha(Context context) {
         super(context);
     }
@@ -37,6 +40,19 @@ public class Practice04Alpha extends RelativeLayout {
             @Override
             public void onClick(final View v) {
                 // TODO 在这里处理点击事件，通过 View.animate().alpha() 来改变 View 的透明度
+                switch (alphaState) {
+                    case 0:
+                        imageView.animate().alpha(0.0f);
+                        break;
+                    case 1:
+                        imageView.animate().alpha(1.0f);
+                        break;
+                }
+
+                alphaState++;
+                if (alphaState == alphaStateCount) {
+                    alphaState = 0;
+                }
             }
         });
     }
